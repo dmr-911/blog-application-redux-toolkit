@@ -7,7 +7,7 @@ const Navbar = () => {
       {/* logo */}
       <div className="logo">
         <Link to="/">
-          <img src="./images/LWSBlog.svg" alt="search" />
+          <img src="/images/LWSBlog.svg" alt="search" />
         </Link>
       </div>
       {/* auth buttons , This will nonfunctional, just for nice looking */}
