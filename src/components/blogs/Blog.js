@@ -5,6 +5,7 @@ const Blog = ({ blog }) => {
   const { id, title, image, tags, likes, createdAt, isSaved } = blog || {};
 
   const tagsQuery = tags.map((tag) => ` #${tag}`).join(",");
+
   return (
     <div className="lws-card">
       <Link to={`posts/${id}`}>

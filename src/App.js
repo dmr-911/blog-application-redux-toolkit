@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
+import Blog from "./pages/Blog";
 import Home from "./pages/Home";
-import Post from "./pages/Post";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/posts/:postId" element={<Post />}></Route>
+          <Route path="/posts/:blogId" element={<Blog />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,18 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const RelatedPost = () => {
+const RelatedPost = ({ post }) => {
+  const { id, title, image, tags } = post || {};
+
+  const tagsQuery = tags?.map((tag) => ` #${tag}`).join(",") || "";
   return (
     <div className="card">
-      <Link to="/">
-        <img src="/images/ai.jpg" className="card-image" alt="" />
+      <Link to={`blogs/${id}`}>
+        <img src={image} className="card-image" alt="" />
       </Link>
       <div className="p-4">
         <Link to="/" className="text-lg post-title lws-RelatedPostTitle">
-          The future of Artificial Inteligence
+          {title}
         </Link>
         <div className="mb-0 tags">
-          <span>#python,</span> <span>#tech,</span> <span>#git</span>
+          <span>{tagsQuery}</span>
         </div>
         <p>2020-07-15</p>
       </div>
