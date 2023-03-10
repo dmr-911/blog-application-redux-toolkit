@@ -1,39 +1,40 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import fetchBlogsAPI from "./blogsAPI";
 
 const initialState = {
   isLoading: false,
   isError: false,
-  posts: [],
+  blogs: [],
   error: "",
 };
 
 // async thunk
-const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
-  const posts = null;
+export const fetchBlogs = createAsyncThunk("posts/fetchPosts", async () => {
+  const posts = await fetchBlogsAPI();
   return posts;
 });
 
-const postsSlice = createSlice({
+const blogsSlice = createSlice({
   name: "posts",
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(fetchPosts.pending, (state, action) => {
+      .addCase(fetchBlogs.pending, (state, action) => {
         state.isLoading = true;
       })
-      .addCase(fetchPosts.fulfilled, (state, action) => {
+      .addCase(fetchBlogs.fulfilled, (state, action) => {
         state.isError = false;
         state.isLoading = false;
         state.error = "";
-        state.posts = action.payload;
+        state.blogs = action.payload;
       })
-      .addCase(fetchPosts.rejected, (state, action) => {
+      .addCase(fetchBlogs.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.error = action.error.message;
-        state.posts = [];
+        state.blogs = [];
       });
   },
 });
 
-module.exports = postsSlice.reducer;
+export default blogsSlice.reducer;

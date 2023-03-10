@@ -1,6 +1,6 @@
 import React from "react";
 import Aside from "../components/aside/Aside";
-import Posts from "../components/posts/Posts";
+import Blogs from "../components/blogs/Blogs";
 
 const Home = () => {
   return (
@@ -8,7 +8,7 @@ const Home = () => {
       <section className="wrapper">
         <Aside />
         {/* posts container  */}
-        <Posts />
+        <Blogs />
         {/* posts container ends */}
       </section>
     </>

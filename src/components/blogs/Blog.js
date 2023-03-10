@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Post = () => {
+const Blog = () => {
   return (
     <div className="lws-card">
       <Link to="posts/1">
@@ -16,7 +16,6 @@ const Post = () => {
           </p>
         </div>
         <Link to="posts/1" className="lws-postTitle">
-
           Top Github Alternatives{" "}
         </Link>
         <div className="lws-tags">
@@ -32,4 +31,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default Blog;
