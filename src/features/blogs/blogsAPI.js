@@ -1,8 +1,8 @@
 import axiosInstance from "../../axios/axiosInstance";
 
 const fetchBlogsAPI = async () => {
-  const blogs = await axiosInstance.get("blogs");
-  return blogs;
+  const { data } = await axiosInstance.get("blogs");
+  return data;
 };
 
 export default fetchBlogsAPI;
