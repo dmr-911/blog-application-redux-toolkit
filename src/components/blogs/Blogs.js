@@ -26,6 +26,8 @@ const Blogs = () => {
   if (!isLoading && !isError && !blogs?.length)
     content = <div>No blogs available</div>;
 
+  if (isError && !isLoading && error) content = <div>{error}</div>;
+
   if (!isLoading && !isError && blogs?.length)
     content = blogs.map((blog) => <Blog key={blog.id} blog={blog} />);
   return (
