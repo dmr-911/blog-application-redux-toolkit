@@ -5,6 +5,10 @@ const initialState = {
   isLoading: false,
   isError: false,
   blogs: [],
+  filters: {
+    sort: "Default",
+    filter: "All",
+  },
   error: "",
 };
 
@@ -17,6 +21,19 @@ export const fetchBlogs = createAsyncThunk("posts/fetchPosts", async () => {
 const blogsSlice = createSlice({
   name: "posts",
   initialState,
+  reducers: {
+    filtersSort: (state, action) => {
+      state.filters.sort = action.payload;
+    },
+    filtersFilter: (state, action) => {
+      if (action.payload === "Saved") {
+        state.blogs = state.blogs.filter((blog) => blog.isSaved);
+      } else {
+        state.filters.filter = "All";
+      }
+    },
+  },
+
   extraReducers: (builder) => {
     builder
       .addCase(fetchBlogs.pending, (state, action) => {
@@ -38,3 +55,5 @@ const blogsSlice = createSlice({
 });
 
 export default blogsSlice.reducer;
+export const { sortBlogsByDate, filtersSort, filtersFilter } =
+  blogsSlice.actions;
