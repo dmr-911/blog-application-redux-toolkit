@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchBlogAPI, updateBlogAPI } from "./blogAPI";
+import { fetchBlogAPI, updateBlogAPI, updateBlogSavedAPI } from "./blogAPI";
 
 const initialState = {
   isLoading: false,
@@ -18,6 +18,15 @@ export const updateBlog = createAsyncThunk(
   "post/update",
   async ({ id, totalLikes }) => {
     const newBlog = await updateBlogAPI({ id, totalLikes });
+
+    return newBlog;
+  }
+);
+
+export const updateBlogSaved = createAsyncThunk(
+  "post/updateSaved",
+  async ({ id, isSaved }) => {
+    const newBlog = await updateBlogSavedAPI({ id, isSaved });
 
     return newBlog;
   }
@@ -45,6 +54,9 @@ const blogsSlice = createSlice({
       })
       .addCase(updateBlog.fulfilled, (state, action) => {
         state.blog.likes = state.blog.likes + 1;
+      })
+      .addCase(updateBlogSaved.fulfilled, (state, action) => {
+        state.blog.isSaved = !state.blog.isSaved;
       });
   },
 });

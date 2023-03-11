@@ -82,7 +82,7 @@
         "tailwindcss",
         "css"
       ],
-      "likes": 44,
+      "likes": 45,
       "isSaved": false,
       "createdAt": "2022-01-23"
     },
@@ -110,8 +110,8 @@
         "nodejs",
         "javascript"
       ],
-      "likes": 24,
-      "isSaved": false,
+      "likes": 25,
+      "isSaved": true,
       "createdAt": "2022-11-13"
     }
   ]

@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import GoHome from "../components/GoHome";
 import RelatedPosts from "../components/relatedPosts/RelatedPosts";
-import { fetchBlog, updateBlog } from "../features/blog/blogSlice";
+import {
+  fetchBlog,
+  updateBlog,
+  updateBlogSaved,
+} from "../features/blog/blogSlice";
 
 const Blog = () => {
   const { blogId } = useParams();
@@ -27,11 +31,12 @@ const Blog = () => {
 
   // likes handler
   const handleLikes = (id, likes) => {
-    const updatedBlog = {
-      ...blog,
-      likes: likes + 1,
-    };
     dispatch(updateBlog({ id, totalLikes: likes + 1 }));
+  };
+
+  // saved handler
+  const handleSaved = (id, isSaved) => {
+    dispatch(updateBlogSaved({ id, isSaved }));
   };
   return (
     <div>
@@ -64,7 +69,11 @@ const Blog = () => {
               </button>
               {/* handle save on button click */}
               {/* use ".active" class and "Saved" text  if a post is saved, other wise "Save" */}
-              <button className="active save-btn" id="lws-singleSavedBtn">
+              <button
+                className="active save-btn"
+                id="lws-singleSavedBtn"
+                onClick={() => handleSaved(id, isSaved)}
+              >
                 <i className="fa-regular fa-bookmark" /> {isSaved && "Saved"}
               </button>
             </div>

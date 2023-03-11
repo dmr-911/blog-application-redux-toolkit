@@ -11,3 +11,10 @@ export const updateBlogAPI = async ({ id, totalLikes }) => {
 
   return data;
 };
+export const updateBlogSavedAPI = async ({ id, isSaved }) => {
+  const { data } = await axiosInstance.patch(`blogs/${id}`, {
+    isSaved: !isSaved,
+  });
+
+  return data;
+};
