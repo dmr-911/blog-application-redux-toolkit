@@ -23,10 +23,7 @@ const Blog = () => {
 
   // effect for fetch blog
   useEffect(() => {
-    const cleanup = () => dispatch(fetchBlog({ id: blogId }));
-    return () => {
-      cleanup();
-    };
+    dispatch(fetchBlog({ id: blogId }));
   }, [dispatch, blogId]);
 
   // likes handler
