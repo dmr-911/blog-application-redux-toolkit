@@ -67,7 +67,7 @@ const Blog = () => {
               {/* handle save on button click */}
               {/* use ".active" class and "Saved" text  if a post is saved, other wise "Save" */}
               <button
-                className="active save-btn"
+                className={`${isSaved && "active"} save-btn`}
                 id="lws-singleSavedBtn"
                 onClick={() => handleSaved(id, isSaved)}
               >
