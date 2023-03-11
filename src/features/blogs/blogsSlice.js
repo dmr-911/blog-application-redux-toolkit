@@ -9,10 +9,13 @@ const initialState = {
 };
 
 // async thunk
-export const fetchBlogs = createAsyncThunk("posts/fetchPosts", async () => {
-  const posts = await fetchBlogsAPI();
-  return posts;
-});
+export const fetchBlogs = createAsyncThunk(
+  "posts/fetchPosts",
+  async ({ sort, filter }) => {
+    const posts = await fetchBlogsAPI({ sort, filter });
+    return posts;
+  }
+);
 
 const blogsSlice = createSlice({
   name: "posts",

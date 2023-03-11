@@ -18,8 +18,8 @@ const Select = () => {
       defaultValue={sort}
       onChange={handleValue}
     >
-      <option value="Default">Default</option>
-      <option value="newest">Newest</option>
+      <option value="">Default</option>
+      <option value="createdAt">Newest</option>
       <option value="most_liked">Most Liked</option>
     </select>
   );

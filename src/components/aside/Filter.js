@@ -17,7 +17,7 @@ const Filter = () => {
           id="lws-all"
           defaultChecked
           className="radio"
-          value="All"
+          value=""
         />
         <label htmlFor="lws-all">All</label>
       </div>

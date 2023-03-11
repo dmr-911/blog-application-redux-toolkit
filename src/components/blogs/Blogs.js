@@ -9,14 +9,12 @@ const Blogs = () => {
   const { isLoading, isError, error, blogs } = useSelector(
     (state) => state.blogs
   );
+  const { sort, filter } = useSelector((state) => state.filter?.filters);
 
   // effect for fetching blogs
   useEffect(() => {
-    const cleanup = () => dispatch(fetchBlogs());
-    return () => {
-      cleanup();
-    };
-  }, [dispatch]);
+    dispatch(fetchBlogs({ sort, filter }));
+  }, [dispatch, sort, filter]);
 
   // decide what to render
   let content;

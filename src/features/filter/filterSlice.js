@@ -4,8 +4,8 @@ const initialState = {
   isLoading: false,
   isError: false,
   filters: {
-    sort: "Default",
-    filter: "Saved",
+    sort: "",
+    filter: "",
   },
   blogs: [],
   error: "",
