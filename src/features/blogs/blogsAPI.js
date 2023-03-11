@@ -1,7 +1,6 @@
 import axiosInstance from "../../axios/axiosInstance";
 
 const fetchBlogsAPI = async ({ sort, filter }) => {
-  console.log(sort, filter);
   let sortQuery = "";
   let filterQuery = "";
   if (sort === "createdAt") sortQuery += `_sort=createdAt&_order=desc`;
@@ -18,7 +17,6 @@ const fetchBlogsAPI = async ({ sort, filter }) => {
 
   const finalQuery =
     joinStrArr.length > 1 ? joinStrArr.join("&") : sortQuery || filterQuery;
-
 
   const { data } = await axiosInstance.get(`blogs/?${finalQuery}`);
   return data;

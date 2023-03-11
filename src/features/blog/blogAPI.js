@@ -1,8 +1,13 @@
 import axiosInstance from "../../axios/axiosInstance";
 
-const fetchBlogAPI = async ({ id }) => {
+export const fetchBlogAPI = async ({ id }) => {
   const { data } = await axiosInstance.get(`blogs/${id}`);
   return data;
 };
+export const updateBlogAPI = async ({ id, totalLikes }) => {
+  const { data } = await axiosInstance.patch(`blogs/${id}`, {
+    likes: totalLikes,
+  });
 
-export default fetchBlogAPI;
+  return data;
+};

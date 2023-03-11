@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import GoHome from "../components/GoHome";
 import RelatedPosts from "../components/relatedPosts/RelatedPosts";
-import { fetchBlog } from "../features/blog/blogSlice";
+import { fetchBlog, updateBlog } from "../features/blog/blogSlice";
 
 const Blog = () => {
   const { blogId } = useParams();
@@ -24,6 +24,15 @@ const Blog = () => {
       cleanup();
     };
   }, [dispatch, blogId]);
+
+  // likes handler
+  const handleLikes = (id, likes) => {
+    const updatedBlog = {
+      ...blog,
+      likes: likes + 1,
+    };
+    dispatch(updateBlog({ id, totalLikes: likes + 1 }));
+  };
   return (
     <div>
       {/* Go Home / Go Back */}
@@ -46,7 +55,11 @@ const Blog = () => {
             </div>
             <div className="btn-group">
               {/* handle like on button click */}
-              <button className="like-btn" id="lws-singleLinks">
+              <button
+                className="like-btn"
+                id="lws-singleLinks"
+                onClick={() => handleLikes(id, likes)}
+              >
                 <i className="fa-regular fa-thumbs-up" /> {likes}
               </button>
               {/* handle save on button click */}
