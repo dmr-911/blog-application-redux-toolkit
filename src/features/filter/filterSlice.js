@@ -5,7 +5,7 @@ const initialState = {
   isError: false,
   filters: {
     sort: "Default",
-    filter: "All",
+    filter: "Saved",
   },
   blogs: [],
   error: "",
@@ -15,18 +15,14 @@ const filterSlice = createSlice({
   name: "post",
   initialState,
   reducers: {
-    sortBlogsByDate: (state, action) => {
-      const blogs = state.blogs;
-      if (state?.filters?.sort === "Newest") {
-        const sortedBlogs = blogs?.sort(
-          (a, b) =>
-            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-        );
-        return (state.blogs = sortedBlogs);
-      }
+    filterBySort: (state, action) => {
+      state.filters.sort = action.payload;
+    },
+    filterAction: (state, action) => {
+      state.filters.filter = action.payload;
     },
   },
 });
 
 export default filterSlice.reducer;
-export const { sortBlogsByDate } = filterSlice.actions;
+export const { filterBySort, filterAction } = filterSlice.actions;

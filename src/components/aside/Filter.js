@@ -1,16 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { fetchBlogs, filtersFilter } from "../../features/blogs/blogsSlice";
+import { filterAction } from "../../features/filter/filterSlice";
 
 const Filter = () => {
   const dispatch = useDispatch();
   const handleValues = (e) => {
-    console.log(e.target.value);
-    if (e.target.value === "Saved") {
-      dispatch(filtersFilter(e.target.value));
-    } else {
-      dispatch(fetchBlogs());
-    }
+    dispatch(filterAction(e.target.value));
   };
   return (
     <div className="radio-group" onChange={handleValues}>

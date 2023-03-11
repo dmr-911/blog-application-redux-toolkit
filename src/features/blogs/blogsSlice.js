@@ -5,10 +5,6 @@ const initialState = {
   isLoading: false,
   isError: false,
   blogs: [],
-  filters: {
-    sort: "Default",
-    filter: "All",
-  },
   error: "",
 };
 
@@ -21,28 +17,6 @@ export const fetchBlogs = createAsyncThunk("posts/fetchPosts", async () => {
 const blogsSlice = createSlice({
   name: "posts",
   initialState,
-  reducers: {
-    filtersSort: (state, action) => {
-      if (action.payload === "newest") {
-        state.blogs = state.blogs?.sort(
-          (a, b) =>
-            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-        );
-      } else if (action.payload === "most_liked") {
-        state.blogs = state.blogs?.sort((a, b) => b.likes - a.likes);
-      } else {
-        state.filters.sort = "Default";
-      }
-    },
-    filtersFilter: (state, action) => {
-      if (action.payload === "Saved") {
-        state.filters.filter = action.payload;
-        state.blogs = state.blogs.filter((blog) => blog.isSaved);
-      } else {
-        state.filters.filter = "All";
-      }
-    },
-  },
 
   extraReducers: (builder) => {
     builder
